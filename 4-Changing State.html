@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Basics</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="app"></div>
+    <script type="text/babel">
+      class App extends React.Component{
+        state ={
+          name:"Ryu",
+          age:"30"
+        }
+
+        handleClick = (e) =>{
+          console.log(e.target);
+          console.log(this.state);
+          this.setState({
+            name:"Yoshi"
+          });
+        }
+
+        handleMouseOver = (e) =>{
+          console.log(e.target,e.pageX)
+        }
+
+        handleCopy = (e) => {
+          console.log("Try being original for once")
+        }
+
+        render(){
+          return(
+            <div className="app-content">
+              <h1>Hello, ninjas !</h1>
+              <p>My name is: {this.state.name} and I am {this.state.age}</p>
+              <button onClick={(this.handleClick)}>Click me</button>
+              <button onMouseOver={this.handleMouseOver}>Hover me</button>
+              <p onCopy={this.handleCopy}>What we think, we become</p>
+              </div>
+          )
+        }
+      }
+
+      const container = document.getElementById('app');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />)
+
+    </script>
+   
+</body>
+</html>
